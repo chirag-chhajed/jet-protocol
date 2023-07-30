@@ -10,20 +10,6 @@ module.exports = {
       colors: {
         buttonColor: "#64AE9D",
         filter: "#32A5D3",
-        boxShadow: {
-          buttonShadow:
-            "0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset, 0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset",
-          activeButtonShadow:
-            "0px 1px 1px 0px rgba(255, 255, 255, 0.48) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.48) inset",
-          buttonShadow2:
-            "0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset, 0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset;",
-          activeButtonShadow2:
-            "0px 1px 1px 0px rgba(255, 255, 255, 0.48) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.48) inset;",
-        },
-
-        fontFamily: {
-          playFair: ["Playfair Display", "sans serif"],
-        },
       },
       backgroundImage: {
         conicGradient:
@@ -32,12 +18,25 @@ module.exports = {
       animation: {
         sliderAnimation: "sliderAnimation 9s linear infinite",
       },
-      keyframes:{
+      keyframes: {
         sliderAnimation: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" },
         },
-      }
+      },
+      boxShadow: {
+        buttonShadow:
+          "0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset, 0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset",
+        activeButtonShadow:
+          "0px 1px 1px 0px rgba(255, 255, 255, 0.48) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.48) inset",
+        buttonShadow2:
+          "0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset, 0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset;",
+        activeButtonShadow2:
+          "0px 1px 1px 0px rgba(255, 255, 255, 0.48) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.48) inset;",
+      },
+      fontFamily: {
+        playFair: ["Playfair Display", "sans serif"],
+      },
     },
   },
   plugins: [],
