@@ -25,9 +25,17 @@ module.exports = {
       fontFamily: {
         playFair: ["Playfair Display", "sans serif"],
       },
+      keyframes:{
+        sliderAnimation : {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+
+        }
+      },
+      animation:{
+        sliderAnimation: 'sliderAnimation 8s linear infinite'
+      }
     },
   },
   plugins: [],
 };
-// 0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset,
-//                 0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset

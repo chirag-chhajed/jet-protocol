@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const HeroSection = () => {
   return (
-    <main className="absolute flex flex-col items-center text-center -translate-x-1/2 -translate-y-1/2 place-self-center top-1/2 left-1/2 px-11">
+    <main className="flex flex-col items-center text-center place-self-center px-11 max-w-[75%] mt-40">
       <p className="uppercase font-bold  text-xs text-[#54C0A0]">
         jet protocol
       </p>
@@ -17,7 +17,7 @@ const HeroSection = () => {
         on solana.
       </p>
       <div className="flex gap-5 pt-10">
-        <Button text="launch app" />
+        <Button text="read docs" />
         <button className="rounded-[100px] border border-solid border-white border-opacity-50 bg-black px-5 py-2  text-xs lowercase font-semibold text-[14px] text-center self-start shadow-buttonShadow2 backdrop-blur-[6px] active:shadow-activeButtonShadow2 transition">
           how it works
         </button>

@@ -23,7 +23,6 @@ const menuItems = [
 const Header = () => {
   return (
     <header className="flex items-center justify-between px-10 py-3 bg-black border-white border-solid border-[1px] rounded-[100px] border-opacity-10 bg-opacity-50">
-      {/* <div className="absolute inset-0 bg-black rounded-[100px] opacity-10 backdrop-blur" /> */}
       <Image
         width={120}
         height={24}
