@@ -1,18 +1,17 @@
-import Image from "next/image";
 import sliderData from "@/data/sliderData"; 
 
 const Slider = () => {
-  const loopedSliderData = [...sliderData, ...sliderData];
+  const loopedSliderData = [...sliderData, ...sliderData,...sliderData];
   return (
-    <div className="overflow-hidden whitespace-nowrap sm:-mx-8 md:-mx-16 lg:-mx-32">
-      <div className="flex gap-6 mt-20 animate-sliderAnimation">
+    <div className="mt-20 overflow-hidden whitespace-nowrap sm:-mx-8 md:-mx-16 lg:-mx-32">
+      <div className="flex gap-6 animate-sliderAnimation">
         {loopedSliderData.map((item, index) => (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             key={index}
             src={item.url}
-            width={item.width}
-            height={item.height}
             alt={item.alt}
+            className={`h-[${item.height}px] w-[${item.width}px] `}
           />
         ))}
       </div>

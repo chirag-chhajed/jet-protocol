@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <div className="max-w-screen-xl min-h-screen px-4 pt-8 mx-auto leading-normal text-white bg-black sm:px-8 md:px-16 lg:px-32">
+        <div className="max-w-screen-xl px-4 pt-8 mx-auto leading-normal text-white bg-black sm:px-8 md:px-16 lg:px-32">
           {children}
         </div>
       </body>
