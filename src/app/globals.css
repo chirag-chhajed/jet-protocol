@@ -2,26 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* @layer utilities{
+    .button-box-shadow{
+        box-shadow: 0px 2px 2px 0px rgba(255, 255, 255, 0.48) inset,
+                0px -2px 2px 0px rgba(0, 0, 0, 0.48) inset;
+    }
+} */
+.left-gradient {
+    background: conic-gradient(from 270deg at 50.00% 50.00%,
+            rgba(0, 0, 0, 0.00) 2.3409034498035908deg,
+            rgba(84, 192, 160, 0.10) 2.5281363911926746deg,
+            rgba(0, 0, 0, 0.00) 181.31576299667358deg,
+            rgba(84, 192, 160, 0.00) 256.43158435821533deg,
+            #54C0A0 359.23537731170654deg);
+    transform: scaleX(-1);
+    /* Flip horizontally */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.right-gradient {
+    background: conic-gradient(from 270deg at 50.00% 50.00%,
+            rgba(0, 0, 0, 0.00) 2.3409034498035908deg,
+            rgba(84, 192, 160, 0.10) 2.5281363911926746deg,
+            rgba(0, 0, 0, 0.00) 181.31576299667358deg,
+            rgba(84, 192, 160, 0.00) 256.43158435821533deg,
+            #54C0A0 359.23537731170654deg);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .frame-wrapper {
+    border: 0px none;
+    height: 524px;
+    width: 697px;
+}
+
+.box .frame {
+    height: 524px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 697px;
+}
+
+.box .gradient {
+    height: 524px;
+    opacity: 0.8;
+}
+
+.box .overlap-group {
+    height: 524px;
+    position: relative;
+    width: 697px;
+}
+
+.box .rectangle {
+    background-color: #000000;
+    filter: blur(20px);
+    height: 7px;
+    left: 211px;
+    position: absolute;
+    top: 190px;
+    width: 273px;
+}
+
+.box .div {
+    background: conic-gradient(from 180deg at 50% 50%,
+            rgba(0, 0, 0, 0) 2.34deg,
+            rgba(84, 192, 160, 0.1) 2.53deg,
+            rgba(0, 0, 0, 0) 181.32deg,
+            rgba(84, 192, 160, 0) 256.43deg,
+            rgb(84, 192, 160) 359.24deg);
+    height: 393px;
+    left: 348px;
+    position: absolute;
+    top: 0;
+    width: 275px;
+}
+
+.box .rectangle-2 {
+    background: conic-gradient(from 180deg at 50% 50%,
+            rgba(0, 0, 0, 0) 2.34deg,
+            rgba(84, 192, 160, 0.1) 2.53deg,
+            rgba(0, 0, 0, 0) 181.32deg,
+            rgba(84, 192, 160, 0) 256.43deg,
+            rgb(84, 192, 160) 359.24deg);
+    height: 393px;
+    left: 73px;
+    position: absolute;
+    top: 0;
+    transform: rotate(180deg);
+    width: 275px;
+}
+
+.box .rectangle-3 {
+    -webkit-backdrop-filter: blur(50px) brightness(100%);
+    backdrop-filter: blur(50px) brightness(100%);
+    background-color: #00000005;
+    height: 225px;
+    left: 0;
+    position: absolute;
+    top: 299px;
+    width: 697px;
+}
+
+.box .ellipse {
+    background-color: #32a5d3;
+    border-radius: 142px/47px;
+    filter: blur(250px);
+    height: 94px;
+    left: 211px;
+    position: absolute;
+    top: 187px;
+    width: 284px;
 }
