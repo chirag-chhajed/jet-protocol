@@ -1,9 +1,13 @@
-import axios from "@/lib/axios";
 import axiosConfig from "@/lib/axios-config";
 const apiKey = process.env.NEXT_PUBLIC_MOVIEDB_API_KEY;
 
-export const getPost = async (id:string) => {
-  const { data } = await axios.get("/posts/" + id);
+export const getMovieDetail = async (id:string) => {
+  console.log(id,"getMovieDetail",apiKey)
+  const { data } = await axiosConfig.get("3/movie/" + id,{
+    params: {
+      api_key: apiKey
+    }
+  });
   return data;
 };
 

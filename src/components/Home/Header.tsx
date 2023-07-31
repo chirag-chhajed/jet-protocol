@@ -33,12 +33,17 @@ const Header = () => {
         <ul className="flex items-center justify-between gap-10 text-base text-white">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.link}>{item.name}</a>
+              <a
+                className="relative px-2 pb-2 transition-all border-b-2 border-transparent hover:border-white"
+                href={item.link}
+              >
+                {item.name}
+              </a>
             </li>
           ))}
         </ul>
       </nav>
-      <Button text="launch app"/>
+      <Button text="launch app" />
     </header>
   );
 }
