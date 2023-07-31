@@ -2,7 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@fontsource/playfair-display': ^5.0.5
-  '@supabase/auth-helpers-nextjs': ^0.7.2
+  '@supabase/auth-helpers-nextjs': ^0.7.3
+  '@supabase/auth-helpers-react': ^0.4.1
+  '@supabase/auth-ui-react': ^0.4.2
+  '@supabase/auth-ui-shared': ^0.1.6
   '@supabase/supabase-js': ^2.31.0
   '@tanstack/eslint-plugin-query': ^4.29.25
   '@tanstack/react-query': ^4.32.0
@@ -17,13 +20,16 @@ specifiers:
   postcss: 8.4.27
   react: 18.2.0
   react-dom: 18.2.0
-  supabase: '>=1.8.1'
+  supabase: ^1.82.2
   tailwindcss: 3.3.3
   typescript: 5.1.6
 
 dependencies:
   '@fontsource/playfair-display': 5.0.5
   '@supabase/auth-helpers-nextjs': 0.7.3_f72unsjcqshcjlx5jvu5j5cz5m
+  '@supabase/auth-helpers-react': 0.4.1_f72unsjcqshcjlx5jvu5j5cz5m
+  '@supabase/auth-ui-react': 0.4.2_f72unsjcqshcjlx5jvu5j5cz5m
+  '@supabase/auth-ui-shared': 0.1.6_f72unsjcqshcjlx5jvu5j5cz5m
   '@supabase/supabase-js': 2.31.0
   '@tanstack/react-query': 4.32.0_biqbaboplfbrettd7655fr4n2y
   '@types/node': 20.4.5
@@ -286,6 +292,10 @@ packages:
     resolution: {integrity: sha512-V+MvGwaHH03hYhY+k6Ef/xKd6RYlc4q8WBx+2ANmipHJcKuktNcI/NgEsJgdSUF6Lw32njT6OnrRsKYCdgHjYw==}
     dev: false
 
+  /@stitches/core/1.2.8:
+    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
+    dev: false
+
   /@supabase/auth-helpers-nextjs/0.7.3_f72unsjcqshcjlx5jvu5j5cz5m:
     resolution: {integrity: sha512-ikuBGHFnvyfneToj0Y2EfiqUnEr1bdqR6JZiFydPnzACQ2Q7TkcOhkoUSc9/sMEeG7EKX5PhH8riAz42oPdKRg==}
     peerDependencies:
@@ -296,6 +306,14 @@ packages:
       set-cookie-parser: 2.6.0
     dev: false
 
+  /@supabase/auth-helpers-react/0.4.1_f72unsjcqshcjlx5jvu5j5cz5m:
+    resolution: {integrity: sha512-Y9ZWzhpsOX93rokmywDdclzTDPbHjybU7o4/FmXlAqta75msFxHV9WVTR6//SZf2Bca2Cf65Oa/j+fYtMWraDQ==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.19.0
+    dependencies:
+      '@supabase/supabase-js': 2.31.0
+    dev: false
+
   /@supabase/auth-helpers-shared/0.4.1_f72unsjcqshcjlx5jvu5j5cz5m:
     resolution: {integrity: sha512-IEDX9JzWkIjQiLUaP4Qy5YDiG0jFQatWfS+jw8cCQs6QfbNdEPd2Y3qonwGHnM90CZom9SvjuylBv2pFVAL7Lw==}
     peerDependencies:
@@ -303,6 +321,27 @@ packages:
     dependencies:
       '@supabase/supabase-js': 2.31.0
       jose: 4.14.4
+    dev: false
+
+  /@supabase/auth-ui-react/0.4.2_f72unsjcqshcjlx5jvu5j5cz5m:
+    resolution: {integrity: sha512-NLP1udNtbteWDZYUoJKD/sDzi1BeZpS+CvUk1D0FwHevlVDT1fUf27sVLtrAgchSIQxHwZHTiUPJC9auCF3Zyw==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@stitches/core': 1.2.8
+      '@supabase/auth-ui-shared': 0.1.6_f72unsjcqshcjlx5jvu5j5cz5m
+      '@supabase/supabase-js': 2.31.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@supabase/auth-ui-shared/0.1.6_f72unsjcqshcjlx5jvu5j5cz5m:
+    resolution: {integrity: sha512-dBlP2XR5KSSCBMgkWJMkc2UVA21V5AobKmekwIiHVvyVtzAiFqE5XWJiPV+kMlnRLzFXDeA0Z/CqdKTL/Kbs4A==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@supabase/supabase-js': 2.31.0
     dev: false
 
   /@supabase/functions-js/2.1.2:
@@ -643,7 +682,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.21.9
+      browserslist: 4.21.10
       caniuse-lite: 1.0.30001517
       fraction.js: 4.2.0
       normalize-range: 0.1.2
@@ -713,15 +752,15 @@ packages:
       fill-range: 7.0.1
     dev: false
 
-  /browserslist/4.21.9:
-    resolution: {integrity: sha512-M0MFoZzbUrRU4KNfCrDLnvyE7gub+peetoTid3TBIqtunaDJyXlwhakT+/VkvSXcfIzFfK/nkCs4nmyTmxdNSg==}
+  /browserslist/4.21.10:
+    resolution: {integrity: sha512-bipEBdZfVH5/pwrvqc+Ub0kUPVfGUhlKxbvfD+z1BDnPEO/X98ruXGA1WP5ASpAFKan7Qr6j736IacbZQuAlKQ==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001517
       electron-to-chromium: 1.4.477
       node-releases: 2.0.13
-      update-browserslist-db: 1.0.11_browserslist@4.21.9
+      update-browserslist-db: 1.0.11_browserslist@4.21.10
     dev: false
 
   /bufferutil/4.0.7:
@@ -1107,7 +1146,7 @@ packages:
       eslint-import-resolver-typescript: 3.5.5_ay3lolor7yfwlazxrf64uc3lny
       eslint-plugin-import: 2.28.0_l4wv2ryudfgmv67zjhubgmsfdm
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.46.0
-      eslint-plugin-react: 7.33.0_eslint@8.46.0
+      eslint-plugin-react: 7.33.1_eslint@8.46.0
       eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705_eslint@8.46.0
       typescript: 5.1.6
     transitivePeerDependencies:
@@ -1249,8 +1288,8 @@ packages:
       eslint: 8.46.0
     dev: false
 
-  /eslint-plugin-react/7.33.0_eslint@8.46.0:
-    resolution: {integrity: sha512-qewL/8P34WkY8jAqdQxsiL82pDUeT7nhs8IsuXgfgnsEloKCT4miAV9N9kGtx7/KM9NH/NCGUE7Edt9iGxLXFw==}
+  /eslint-plugin-react/7.33.1_eslint@8.46.0:
+    resolution: {integrity: sha512-L093k0WAMvr6VhNwReB8VgOq5s2LesZmrpPdKz/kZElQDzqS7G7+DnKoqT+w4JwuiGeAhAvHO0fvy0Eyk4ejDA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -3036,13 +3075,13 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /update-browserslist-db/1.0.11_browserslist@4.21.9:
+  /update-browserslist-db/1.0.11_browserslist@4.21.10:
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.9
+      browserslist: 4.21.10
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false
