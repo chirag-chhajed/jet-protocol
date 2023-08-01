@@ -2,7 +2,6 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
-import { error } from "console";
 
 const LoginPage = () => {
   const supabaseClient = useSupabaseClient();
@@ -14,26 +13,26 @@ const LoginPage = () => {
   // make an error use state below
   const [error, setError] = useState<string>("");
 
-  useEffect(() => {
-    async function loadData() {
-      const { data } = await supabaseClient.from("test").select("*");
-      console.log("data", data);
-      // const {
-      //   data: { session },
-      // } = await supabaseClient.auth.getSession();
-      // console.log(session,"Session");
+  // useEffect(() => {
+  //   async function loadData() {
+  //     const { data } = await supabaseClient.from("test").select("*");
+  //     console.log("data", data);
+  //     // const {
+  //     //   data: { session },
+  //     // } = await supabaseClient.auth.getSession();
+  //     // console.log(session,"Session");
 
-      let { data: profiles, error } = await supabaseClient
-        .from("profiles")
-        .select("*");
-      console.log(profiles,"profiles");
+  //     let { data: profiles, error } = await supabaseClient
+  //       .from("profiles")
+  //       .select("*");
+  //     console.log(profiles,"profiles");
 
-      setData(data);
-    }
+  //     setData(data);
+  //   }
 
     // Only run query once user is logged in.
-    if (user) loadData();
-  }, [user]);
+  //   if (user) loadData();
+  // }, [user]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

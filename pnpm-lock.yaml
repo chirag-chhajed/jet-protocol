@@ -21,6 +21,7 @@ specifiers:
   postcss: 8.4.27
   react: 18.2.0
   react-dom: 18.2.0
+  sonner: ^0.6.2
   supabase: ^1.82.2
   tailwindcss: 3.3.3
   typescript: 5.1.6
@@ -45,6 +46,7 @@ dependencies:
   postcss: 8.4.27
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  sonner: 0.6.2_biqbaboplfbrettd7655fr4n2y
   tailwindcss: 3.3.3
   typescript: 5.1.6
 
@@ -2803,6 +2805,16 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+    dev: false
+
+  /sonner/0.6.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bh4FWhYoNN481ZIW94W4e0kSLBTMGislYg2YXvDS1px1AJJz4erQe9jHV8s5pS1VMVDgfh3CslNSFLaU6Ldrnw==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /source-map-js/1.0.2:

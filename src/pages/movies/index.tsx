@@ -39,7 +39,27 @@ const MoviesPage = () => {
   }, [scrollPosition, hasNextPage, isFetching, fetchNextPage]);
   // You can check isLoading and isError to handle loading and error states
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center h-screen bg-[#141414]">
+        <div className="flex items-center justify-center space-x-1 text-sm text-white">
+          <svg
+            fill="none"
+            className="w-6 h-6 animate-spin"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+
+          <div>Loading ...</div>
+        </div>
+      </div>
+    );
   }
   // console.log(hasNextPage, "hasNextPage");
 
@@ -58,13 +78,11 @@ const MoviesPage = () => {
               className="card bg-[#ffffff1a] h-auto  w-64 rounded-lg shadow-md overflow-hidden"
             >
               <div className="flex flex-col justify-center h-full card-content">
-                <div className="w-64 h-2/3">
+                <div className="relative w-64 h-2/3">
                   <img
                     className="object-cover w-64 h-2/3"
-                    loading="lazy"
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                     alt={movie.title + "poster"}
-                    // what to do put in this loader?
                   />
                 </div>
                 <div className="max-w-full px-3 py-2 mt-2 font-semibold text-[#f0f0f0] flex flex-col gap-2">

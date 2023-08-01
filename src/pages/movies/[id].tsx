@@ -5,7 +5,7 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { getMovieDetail } from "@/api/posts";
 import { useMovieDetail } from "@/hooks/api/posts";
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -73,10 +73,11 @@ const MovieDetail = () => {
     <div className="bg-[#141414]">
       <div className="container max-w-screen-xl px-4 py-8 mx-auto">
         <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
-          <img
+          <Image
             className="object-cover w-full rounded-lg h-80 md:h-96 lg:h-auto"
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
             alt={movie.title + " Poster"}
+          
           />
           <h1 className="text-3xl font-bold md:text-4xl">{movie.title}</h1>
           <p className="text-base leading-relaxed md:text-lg">

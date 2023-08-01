@@ -1,7 +1,4 @@
-// hooks/useInfiniteScroll.js
-import { useEffect,useState } from "react";
-// type InfiniteScrollCallback = () => void;
-
+import { useEffect, useState } from "react";
 
 const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);

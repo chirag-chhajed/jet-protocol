@@ -9,6 +9,7 @@ import {
   QueryClientProvider,
   DehydratedState
 } from "@tanstack/react-query";
+import {Toaster} from 'sonner'
 
 export default function MyApp({
   Component,
@@ -29,6 +30,7 @@ export default function MyApp({
           initialSession={pageProps.initialSession}
         >
           <Component {...pageProps} />
+          <Toaster richColors/>
         </SessionContextProvider>
       </Hydrate>
     </QueryClientProvider>

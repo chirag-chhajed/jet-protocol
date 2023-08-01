@@ -8,8 +8,6 @@ export const useMovieDetail = (id: string) => {
   });
 };
 
-// hooks/api/posts.js
-
 export const useMovies = () => {
   return useInfiniteQuery(
     ["movies"],
@@ -17,11 +15,10 @@ export const useMovies = () => {
     {
       getNextPageParam: (lastPage) => {
         const nextPage = lastPage.page + 1;
-        // console.log(lastPage)
         if (nextPage <= lastPage.total_pages) {
           return nextPage;
         } else {
-          return lastPage.page; // No more pages to fetch
+          return undefined;
         }
       },
     }
