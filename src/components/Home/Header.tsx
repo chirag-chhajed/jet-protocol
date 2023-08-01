@@ -31,7 +31,7 @@ const Header = () => {
         alt={"logo of the site"}
       />
       <nav className="flex items-center">
-        <ul className="flex items-center justify-between gap-10 text-base text-white">
+        <ul className="items-center justify-between hidden gap-10 text-base text-white sm:flex">
           {menuItems.map((item, index) => (
             <li key={index}>
               <Link
