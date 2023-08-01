@@ -37,6 +37,9 @@ module.exports = {
       fontFamily: {
         playFair: ["Playfair Display", "sans serif"],
       },
+      gridTemplateColumns:{
+        auto: 'repeat(auto-fill, minmax(256px, 1fr))'
+      }
     },
   },
   plugins: [],

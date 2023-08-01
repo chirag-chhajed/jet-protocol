@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "./Button";
+import Link from "next/link";
 
 const menuItems = [
     {
@@ -33,12 +34,19 @@ const Header = () => {
         <ul className="flex items-center justify-between gap-10 text-base text-white">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.link}>{item.name}</a>
+              <Link
+                className="relative px-2 pb-2 transition-all border-b-2 border-transparent hover:border-white"
+                href={item.link}
+              >
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
       </nav>
-      <Button text="launch app"/>
+      <Link href={'/auth/signin'}>
+        <Button text="launch app" />
+      </Link>
     </header>
   );
 }
