@@ -54,7 +54,7 @@ const MovieDetail = () => {
           description: `${movie.overview}`,
           images: [
             {
-              url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+              url: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
             },
           ],
           siteName: "MovieMania",
@@ -64,9 +64,8 @@ const MovieDetail = () => {
         <div className="container max-w-screen-xl px-4 py-8 mx-auto">
           <Header />
           <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
-            <div className="relative w-full rounded-lg h-80 md:h-96 lg:min-h-[550px] lg:h-auto">
+            <div className="relative aspect-[1920/1080]  rounded-lg h-80 md:h-96 lg:min-h-[550px] lg:h-auto">
               <Image
-                // className="object-cover "
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt={movie.title + " Poster"}
                 layout="fill"

@@ -75,7 +75,7 @@ const MoviesPage = () => {
   return (
     <>
       <NextSeo
-      title="MovieMania"
+      title="Movie Mania | Jet Protocol"
       description="MovieMania is a movie database website where you can find all the information about your favorite movies."
       openGraph={
         {

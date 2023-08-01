@@ -10,7 +10,7 @@ import {
   DehydratedState,
 } from "@tanstack/react-query";
 import { Toaster } from "sonner";
-import { DefaultSeo } from "next-seo";
+import { DefaultSeo, NextSeo } from "next-seo";
 
 export default function MyApp({
   Component,
@@ -30,11 +30,8 @@ export default function MyApp({
           supabaseClient={supabaseClient}
           initialSession={pageProps.initialSession}
         >
-          <DefaultSeo
-            titleTemplate="Jet Protocol"
-            defaultTitle="Jet Protocol"
-            defaultOpenGraphImageHeight={1200}
-            defaultOpenGraphImageWidth={630}
+          <NextSeo
+            title="Jet Protocol"
             description="the next generation of defi governance experience open source, transparent and efficient borrowing and lending on solana."
             openGraph={{
               type: "website",
