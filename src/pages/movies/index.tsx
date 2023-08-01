@@ -156,8 +156,8 @@ export default MoviesPage;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const supabase = createPagesServerClient(ctx);
-  const { data: session } = await supabase.auth.getUser();
-  if (!session) {
+  const { data: session } = await supabase.auth.getSession();
+  if (!session.session) {
     return {
       redirect: {
         destination: "/auth/signup",
