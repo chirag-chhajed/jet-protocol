@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Header from "./Header";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 
 interface Movie {
   adult: boolean;
@@ -98,11 +99,13 @@ const MoviesPage = () => {
                 className="card bg-[#ffffff1a] h-auto  w-64 rounded-lg shadow-md overflow-hidden"
               >
                 <div className="flex flex-col justify-center h-full card-content">
-                  <div className="relative w-64 h-2/3">
-                    <img
-                      className="object-cover w-64 h-2/3"
+                  <div className="relative w-64 h-2/3 min-h-[384px]">
+                    <Image
+                      placeholder="blur"
+                      blurDataURL="/blur.png"
                       src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                       alt={movie.title + "poster"}
+                      layout="fill"
                     />
                   </div>
                   <div className="max-w-full px-3 py-2 mt-2 font-semibold text-[#f0f0f0] flex flex-col gap-2">

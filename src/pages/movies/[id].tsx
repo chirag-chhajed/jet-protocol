@@ -6,9 +6,10 @@ import { getMovieDetail } from "@/api/posts";
 import { useMovieDetail } from "@/hooks/api/posts";
 import { useRouter } from "next/router";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import { redirect } from "next/dist/server/api-utils";
 import Header from "./Header";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
+import Link from "next/link";
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -40,7 +41,7 @@ const MovieDetail = () => {
     query: { id },
   } = useRouter();
   const { data: movie, error } = useMovieDetail(id as string);
-  if(error){
+  if (error) {
     return <div>Error occurred while fetching data.</div>;
   }
   return (
@@ -50,8 +51,7 @@ const MovieDetail = () => {
         description={movie.overview}
         openGraph={{
           title: `${movie.title} + " | MovieMania`,
-          description:
-            `${movie.overview}`,
+          description: `${movie.overview}`,
           images: [
             {
               url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
@@ -64,11 +64,16 @@ const MovieDetail = () => {
         <div className="container max-w-screen-xl px-4 py-8 mx-auto">
           <Header />
           <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
-            <img
-              className="object-cover w-full rounded-lg h-80 md:h-96 lg:h-auto"
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              alt={movie.title + " Poster"}
-            />
+            <div className="relative w-full rounded-lg h-80 md:h-96 lg:min-h-[550px] lg:h-auto">
+              <Image
+                // className="object-cover "
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                alt={movie.title + " Poster"}
+                layout="fill"
+                placeholder="blur"
+                blurDataURL="/blur.png"
+              />
+            </div>
             <h1 className="text-3xl font-bold md:text-4xl">{movie.title}</h1>
             <p className="text-base leading-relaxed md:text-lg">
               <span className="font-bold">Tagline:</span>
@@ -151,6 +156,16 @@ const MovieDetail = () => {
                   .join(", ")}
               </span>
             </p>
+            <p className="mt-4 text-sm text-gray-600">
+              Back to{" "}
+              <Link href={"/"} className="text-blue-500 hover:underline">
+                Home
+              </Link>
+              <span className="mx-1">/</span>
+              <Link href={"/movies"} className="text-blue-500 hover:underline">
+                Movies Page
+              </Link>
+            </p>
           </div>
         </div>
       </div>
@@ -162,8 +177,8 @@ export default MovieDetail;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const supabase = createPagesServerClient(ctx);
-  const {data:session} = await supabase.auth.getSession()
-  console.log(session)
+  const { data: session } = await supabase.auth.getSession();
+  // console.log(session);
   if (!session.session)
     return {
       redirect: {
@@ -174,7 +189,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const { id } = ctx.params as Params;
   const queryClient = new QueryClient();
-  console.log(id)
+  // console.log(id);
 
   await queryClient.fetchQuery(["detail", id], () => getMovieDetail(id));
 
