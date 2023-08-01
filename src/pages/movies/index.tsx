@@ -64,18 +64,16 @@ const MoviesPage = () => {
       </div>
     );
   }
-  // console.log(hasNextPage, "hasNextPage");
 
   if (isError) {
     return <div>Error occurred while fetching data.</div>;
   }
-  // console.log(data.pages, "data");
 
   return (
     <>
       <div className="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-6 xl:py-8 bg-[#141414] ">
         <Header />
-        <div className="flex flex-wrap items-center justify-center gap-4 ">
+        <div className="grid items-center justify-center gap-4 auto-rows-auto gap- grid-cols-auto ">
           {data.pages.map((page: Page) =>
             page.results.map((movie: Movie) => (
               <div
@@ -102,7 +100,7 @@ const MoviesPage = () => {
                         {movie.title}
                       </Link>
                     </h3>
-                    <p className="line-clamp-2 text-[#ffffff80] text-base">
+                    <p className="line-clamp-2 text-[#ffffff80] text-base cursor-default">
                       {movie.overview}
                     </p>
                   </div>

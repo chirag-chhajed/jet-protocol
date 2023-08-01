@@ -11,6 +11,7 @@ const Slider = () => {
             key={index}
             src={item.url}
             alt={item.alt}
+            loading="lazy"
             className={`h-[${item.height}px] w-[${item.width}px] `}
           />
         ))}

@@ -5,7 +5,6 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { getMovieDetail } from "@/api/posts";
 import { useMovieDetail } from "@/hooks/api/posts";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/dist/server/api-utils";
 import Header from "./Header";

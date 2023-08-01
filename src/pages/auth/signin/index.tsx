@@ -1,5 +1,6 @@
 import AuthForm from "@/components/AuthForm";
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient, createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { toast } from "sonner";
 
@@ -31,3 +32,21 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const supabase = createPagesServerClient(ctx);
+  const { data: session } = await supabase.auth.getUser();
+  if (session) {
+    return {
+      redirect: {
+        destination: "/movies",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
+
