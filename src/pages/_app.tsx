@@ -30,7 +30,7 @@ export default function MyApp({
           initialSession={pageProps.initialSession}
         >
           <Component {...pageProps} />
-          <Toaster richColors/>
+          <Toaster richColors expand={true}/>
         </SessionContextProvider>
       </Hydrate>
     </QueryClientProvider>
