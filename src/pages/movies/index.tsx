@@ -1,8 +1,11 @@
 import { useMovies } from "@/hooks/api/posts";
 import useScrollPosition from "@/hooks/useScrollPosition";
-import Image from "next/image";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useEffect } from "react";
+import { GetServerSideProps } from "next";
+import Header from "./Header";
+
 interface Movie {
   adult: boolean;
   backdrop_path: string;
@@ -66,40 +69,48 @@ const MoviesPage = () => {
   if (isError) {
     return <div>Error occurred while fetching data.</div>;
   }
-  console.log(data.pages, "data");
+  // console.log(data.pages, "data");
 
   return (
     <>
-      <div className="bg-[#141414] flex flex-wrap gap-4 justify-center items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-2 sm:py-3 md:py-4 lg:py-6 xl:py-8">
-        {data.pages.map((page: Page) =>
-          page.results.map((movie: Movie) => (
-            <div
-              key={movie.id}
-              className="card bg-[#ffffff1a] h-auto  w-64 rounded-lg shadow-md overflow-hidden"
-            >
-              <div className="flex flex-col justify-center h-full card-content">
-                <div className="relative w-64 h-2/3">
-                  <img
-                    className="object-cover w-64 h-2/3"
-                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt={movie.title + "poster"}
-                  />
-                </div>
-                <div className="max-w-full px-3 py-2 mt-2 font-semibold text-[#f0f0f0] flex flex-col gap-2">
-                  <h3
-                    className="text-xl font-bold text-left truncate"
-                    title={movie.title}
-                  >
-                    <Link className="cursor-pointer" href={`/movies/${movie.id}`}>{movie.title}</Link>
-                  </h3>
-                  <p className="line-clamp-2 text-[#ffffff80] text-base">
-                    {movie.overview}
-                  </p>
+      <div className="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-6 xl:py-8 bg-[#141414] ">
+        <Header/>
+        <div className="flex flex-wrap items-center justify-center gap-4 ">
+          {data.pages.map((page: Page) =>
+            page.results.map((movie: Movie) => (
+              <div
+                key={movie.id}
+                className="card bg-[#ffffff1a] h-auto  w-64 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="flex flex-col justify-center h-full card-content">
+                  <div className="relative w-64 h-2/3">
+                    <img
+                      className="object-cover w-64 h-2/3"
+                      src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                      alt={movie.title + "poster"}
+                    />
+                  </div>
+                  <div className="max-w-full px-3 py-2 mt-2 font-semibold text-[#f0f0f0] flex flex-col gap-2">
+                    <h3
+                      className="text-xl font-bold text-left truncate"
+                      title={movie.title}
+                    >
+                      <Link
+                        className="cursor-pointer"
+                        href={`/movies/${movie.id}`}
+                      >
+                        {movie.title}
+                      </Link>
+                    </h3>
+                    <p className="line-clamp-2 text-[#ffffff80] text-base">
+                      {movie.overview}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
       {isLoading && (
         <div role="status">
@@ -127,3 +138,20 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const supabase = createPagesServerClient(ctx);
+  const { data: session } = await supabase.auth.getUser();
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/signup",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

@@ -6,6 +6,9 @@ import { getMovieDetail } from "@/api/posts";
 import { useMovieDetail } from "@/hooks/api/posts";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { redirect } from "next/dist/server/api-utils";
+import Header from "./Header";
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -65,15 +68,15 @@ const MovieDetail = () => {
     query: { id },
   } = useRouter();
   const { data: movie, error } = useMovieDetail(id as string);
-  console.log(movie, "movie");
   if(error){
     return <div>Error occurred while fetching data.</div>;
   }
   return (
     <div className="bg-[#141414]">
       <div className="container max-w-screen-xl px-4 py-8 mx-auto">
+        <Header />
         <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
-          <Image
+          <img
             className="object-cover w-full rounded-lg h-80 md:h-96 lg:h-auto"
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
             alt={movie.title + " Poster"}
@@ -170,6 +173,17 @@ const MovieDetail = () => {
 export default MovieDetail;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const supabase = createPagesServerClient(ctx);
+  const {data:session} = await supabase.auth.getUser()
+  console.log(session)
+  if (!session)
+    return {
+      redirect: {
+        destination: "/auth/signup",
+        permanent: false,
+      },
+    };
+
   const { id } = ctx.params as Params;
   const queryClient = new QueryClient();
   console.log(id)

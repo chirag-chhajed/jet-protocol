@@ -1,7 +1,6 @@
 import AuthForm from "@/components/AuthForm";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { toast } from "sonner";
 
 const SignIn = () => {
