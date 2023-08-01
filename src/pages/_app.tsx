@@ -7,9 +7,10 @@ import {
   Hydrate,
   QueryClient,
   QueryClientProvider,
-  DehydratedState
+  DehydratedState,
 } from "@tanstack/react-query";
-import {Toaster} from 'sonner'
+import { Toaster } from "sonner";
+import { DefaultSeo } from "next-seo";
 
 export default function MyApp({
   Component,
@@ -29,8 +30,26 @@ export default function MyApp({
           supabaseClient={supabaseClient}
           initialSession={pageProps.initialSession}
         >
+          <DefaultSeo
+            titleTemplate="Jet Protocol"
+            defaultTitle="Jet Protocol"
+            defaultOpenGraphImageHeight={1200}
+            defaultOpenGraphImageWidth={630}
+            description="the next generation of defi governance experience open source, transparent and efficient borrowing and lending on solana."
+            openGraph={{
+              type: "website",
+              locale: "en_IE",
+              url: "https://jet-protocol.vercel.app/",
+              site_name: "Jet Protocol",
+              images: [
+                {
+                  url: "https://res.cloudinary.com/dz04dxsi9/image/upload/v1690876845/og_uygams.jpg",
+                },
+              ],
+            }}
+          />
           <Component {...pageProps} />
-          <Toaster richColors expand={true}/>
+          <Toaster richColors expand={true} />
         </SessionContextProvider>
       </Hydrate>
     </QueryClientProvider>

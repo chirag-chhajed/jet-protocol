@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/dist/server/api-utils";
 import Header from "./Header";
+import { NextSeo } from "next-seo";
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -43,101 +44,117 @@ const MovieDetail = () => {
     return <div>Error occurred while fetching data.</div>;
   }
   return (
-    <div className="bg-[#141414]">
-      <div className="container max-w-screen-xl px-4 py-8 mx-auto">
-        <Header />
-        <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
-          <img
-            className="object-cover w-full rounded-lg h-80 md:h-96 lg:h-auto"
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-            alt={movie.title + " Poster"}
-          
-          />
-          <h1 className="text-3xl font-bold md:text-4xl">{movie.title}</h1>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Tagline:</span>
-            <br />
-            <span className="text-gray-300">{movie.tagline}</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Overview:</span>
-            <br />
-            <span className="text-gray-300">{movie.overview}</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Release Date:</span>
-            <br />
-            <span className="text-gray-300">{movie.release_date}</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Runtime:</span>
-            <br />
-            <span className="text-gray-300">{movie.runtime} minutes</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Genres:</span>
-            <br />
-            <span className="flex flex-wrap gap-2">
-              {movie.genres.map((genre: Genre) => (
-                <span
-                  key={genre.id}
-                  className="px-2 py-1 text-white bg-gray-600 rounded"
-                >
-                  {genre.name}
-                </span>
-              ))}
-            </span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Homepage:</span>
-            <br />
-            <a
-              href={movie.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:underline"
-            >
-              {movie.homepage}
-            </a>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">IMDb ID:</span>
-            <br />
-            <span className="text-gray-300">{movie.imdb_id}</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Vote Average:</span>
-            <br />
-            <span className="text-gray-300">
-              {movie.vote_average} (based on {movie.vote_count} votes)
-            </span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Status:</span>
-            <br />
-            <span className="text-gray-300">{movie.status}</span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Production Countries:</span>
-            <br />
-            <span className="text-gray-300">
-              {movie.production_countries
-                .map((country: ProductionCompany) => country.name)
-                .join(", ")}
-            </span>
-          </p>
-          <p className="text-base leading-relaxed md:text-lg">
-            <span className="font-bold">Spoken Languages:</span>
-            <br />
-            <span className="text-gray-300">
-              {movie.spoken_languages
-                .map((language: SpokenLanguage) => language.name)
-                .join(", ")}
-            </span>
-          </p>
+    <>
+      <NextSeo
+        title={movie.title + " | MovieMania"}
+        description={movie.overview}
+        openGraph={{
+          title: `${movie.title} + " | MovieMania`,
+          description:
+            `${movie.overview}`,
+          images: [
+            {
+              url: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+            },
+          ],
+          siteName: "MovieMania",
+        }}
+      />
+      <div className="bg-[#141414]">
+        <div className="container max-w-screen-xl px-4 py-8 mx-auto">
+          <Header />
+          <div className="flex flex-col justify-center gap-4 text-white md:gap-8">
+            <img
+              className="object-cover w-full rounded-lg h-80 md:h-96 lg:h-auto"
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              alt={movie.title + " Poster"}
+            />
+            <h1 className="text-3xl font-bold md:text-4xl">{movie.title}</h1>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Tagline:</span>
+              <br />
+              <span className="text-gray-300">{movie.tagline}</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Overview:</span>
+              <br />
+              <span className="text-gray-300">{movie.overview}</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Release Date:</span>
+              <br />
+              <span className="text-gray-300">{movie.release_date}</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Runtime:</span>
+              <br />
+              <span className="text-gray-300">{movie.runtime} minutes</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Genres:</span>
+              <br />
+              <span className="flex flex-wrap gap-2">
+                {movie.genres.map((genre: Genre) => (
+                  <span
+                    key={genre.id}
+                    className="px-2 py-1 text-white bg-gray-600 rounded"
+                  >
+                    {genre.name}
+                  </span>
+                ))}
+              </span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Homepage:</span>
+              <br />
+              <a
+                href={movie.homepage}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:underline"
+              >
+                {movie.homepage}
+              </a>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">IMDb ID:</span>
+              <br />
+              <span className="text-gray-300">{movie.imdb_id}</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Vote Average:</span>
+              <br />
+              <span className="text-gray-300">
+                {movie.vote_average} (based on {movie.vote_count} votes)
+              </span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Status:</span>
+              <br />
+              <span className="text-gray-300">{movie.status}</span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Production Countries:</span>
+              <br />
+              <span className="text-gray-300">
+                {movie.production_countries
+                  .map((country: ProductionCompany) => country.name)
+                  .join(", ")}
+              </span>
+            </p>
+            <p className="text-base leading-relaxed md:text-lg">
+              <span className="font-bold">Spoken Languages:</span>
+              <br />
+              <span className="text-gray-300">
+                {movie.spoken_languages
+                  .map((language: SpokenLanguage) => language.name)
+                  .join(", ")}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

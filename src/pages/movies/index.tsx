@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Header from "./Header";
+import { NextSeo } from "next-seo";
 
 interface Movie {
   adult: boolean;
@@ -35,6 +36,7 @@ const MoviesPage = () => {
   const { fetchNextPage, data, isLoading, isError, hasNextPage, isFetching } =
     useMovies();
   const scrollPosition = useScrollPosition();
+
   useEffect(() => {
     if (scrollPosition > 90 && hasNextPage && !isFetching) {
       void fetchNextPage();
@@ -71,6 +73,21 @@ const MoviesPage = () => {
 
   return (
     <>
+      <NextSeo
+      title="MovieMania"
+      description="MovieMania is a movie database website where you can find all the information about your favorite movies."
+      openGraph={
+        {
+          title: "MovieMania",
+          description: "MovieMania is a movie database website where you can find all the information about your favorite movies.",
+          images: [
+            {
+              url: "https://res.cloudinary.com/dz04dxsi9/image/upload/v1690878496/Frame_56_ou76vl.jpg"
+            }],
+          siteName: "MovieMania",
+        }
+      }
+      />
       <div className="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-6 xl:py-8 bg-[#141414] ">
         <Header />
         <div className="grid items-center justify-center gap-4 auto-rows-auto gap- grid-cols-auto ">

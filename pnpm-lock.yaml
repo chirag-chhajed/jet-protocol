@@ -4,8 +4,6 @@ specifiers:
   '@fontsource/playfair-display': ^5.0.5
   '@supabase/auth-helpers-nextjs': ^0.7.3
   '@supabase/auth-helpers-react': ^0.4.1
-  '@supabase/auth-ui-react': ^0.4.2
-  '@supabase/auth-ui-shared': ^0.1.6
   '@supabase/supabase-js': ^2.31.0
   '@tanstack/eslint-plugin-query': ^4.29.25
   '@tanstack/react-query': ^4.32.0
@@ -30,8 +28,6 @@ dependencies:
   '@fontsource/playfair-display': 5.0.5
   '@supabase/auth-helpers-nextjs': 0.7.3_f72unsjcqshcjlx5jvu5j5cz5m
   '@supabase/auth-helpers-react': 0.4.1_f72unsjcqshcjlx5jvu5j5cz5m
-  '@supabase/auth-ui-react': 0.4.2_f72unsjcqshcjlx5jvu5j5cz5m
-  '@supabase/auth-ui-shared': 0.1.6_f72unsjcqshcjlx5jvu5j5cz5m
   '@supabase/supabase-js': 2.31.0
   '@tanstack/react-query': 4.32.0_biqbaboplfbrettd7655fr4n2y
   '@types/node': 20.4.5
@@ -296,10 +292,6 @@ packages:
     resolution: {integrity: sha512-V+MvGwaHH03hYhY+k6Ef/xKd6RYlc4q8WBx+2ANmipHJcKuktNcI/NgEsJgdSUF6Lw32njT6OnrRsKYCdgHjYw==}
     dev: false
 
-  /@stitches/core/1.2.8:
-    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
-    dev: false
-
   /@supabase/auth-helpers-nextjs/0.7.3_f72unsjcqshcjlx5jvu5j5cz5m:
     resolution: {integrity: sha512-ikuBGHFnvyfneToj0Y2EfiqUnEr1bdqR6JZiFydPnzACQ2Q7TkcOhkoUSc9/sMEeG7EKX5PhH8riAz42oPdKRg==}
     peerDependencies:
@@ -325,27 +317,6 @@ packages:
     dependencies:
       '@supabase/supabase-js': 2.31.0
       jose: 4.14.4
-    dev: false
-
-  /@supabase/auth-ui-react/0.4.2_f72unsjcqshcjlx5jvu5j5cz5m:
-    resolution: {integrity: sha512-NLP1udNtbteWDZYUoJKD/sDzi1BeZpS+CvUk1D0FwHevlVDT1fUf27sVLtrAgchSIQxHwZHTiUPJC9auCF3Zyw==}
-    peerDependencies:
-      '@supabase/supabase-js': ^2.21.0
-    dependencies:
-      '@stitches/core': 1.2.8
-      '@supabase/auth-ui-shared': 0.1.6_f72unsjcqshcjlx5jvu5j5cz5m
-      '@supabase/supabase-js': 2.31.0
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@supabase/auth-ui-shared/0.1.6_f72unsjcqshcjlx5jvu5j5cz5m:
-    resolution: {integrity: sha512-dBlP2XR5KSSCBMgkWJMkc2UVA21V5AobKmekwIiHVvyVtzAiFqE5XWJiPV+kMlnRLzFXDeA0Z/CqdKTL/Kbs4A==}
-    peerDependencies:
-      '@supabase/supabase-js': ^2.21.0
-    dependencies:
-      '@supabase/supabase-js': 2.31.0
     dev: false
 
   /@supabase/functions-js/2.1.2:
