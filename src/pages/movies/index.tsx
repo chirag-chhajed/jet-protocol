@@ -91,7 +91,7 @@ const MoviesPage = () => {
       />
       <div className="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-6 xl:py-8 bg-[#141414] ">
         <Header />
-        <div className="grid items-center justify-center gap-4 auto-rows-auto gap- grid-cols-auto ">
+        <div className="grid items-center justify-center gap-4 auto-rows-auto gap- grid-cols-auto place-items-center">
           {data.pages.map((page: Page) =>
             page.results.map((movie: Movie) => (
               <div

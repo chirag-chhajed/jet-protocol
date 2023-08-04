@@ -71,6 +71,7 @@ const MovieDetail = () => {
                 layout="fill"
                 placeholder="blur"
                 blurDataURL="/blur.png"
+                className="rounded-lg"
               />
             </div>
             <h1 className="text-3xl font-bold md:text-4xl">{movie.title}</h1>
